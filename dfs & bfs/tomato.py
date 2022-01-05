@@ -44,7 +44,7 @@ for i in range(n):
         if graph[i][j] == 1: # 썩은 토마토 처음부터 찾기
             e_arr.append([i,j])
 
-bfs() # bfs 스행
+bfs() # bfs 수행
 
 # 결과에 따라 출력이 다르게끔 하는 함수
 def true_false():

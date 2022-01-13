@@ -35,3 +35,38 @@ for _ in range(k):
 for a in ans: # 답 출력
     print(a)
 
+
+# BFS 방법(한 노드당 인접한 정점들을 다 다른색으로, 다음 정점 방문시 색 비교)
+# import sys
+# input = sys.stdin.readline
+
+# def BFS(start) :
+#     TeamCheck[start] = True
+#     queue = [start]
+#     for Now in queue :
+#         for Next in Graph[Now] :
+#             if TeamCheck[Next] < 0 :
+#                 TeamCheck[Next] = not TeamCheck[Now]
+#                 queue.append(Next)
+
+#             else :
+#                 if TeamCheck[Next] == TeamCheck[Now] : return ("NO")
+
+#     return "YES"
+
+# for _ in range(int(input())) :
+#     V, E = map(int, input().split())
+
+#     TeamCheck = [-1] * V
+#     Graph = [[] for i in range(V)]
+#     for _ in range(E) :
+#         a, b = map(int, input().split())
+#         Graph[a-1].append(b-1)
+#         Graph[b-1].append(a-1)
+
+#     ans = "YES"
+#     for v in range(V) :
+#         if TeamCheck[v] < 0 :
+#             ans = BFS(v)
+#             if ans[0] == "N" : break
+#     print(ans)

@@ -7,11 +7,11 @@ for i in sorted(a[1:]): # 첫번쨰 줄 버리고 정렬된 것으로 하나씩 
     print(i)
 
 # Good explanation
-from sys import stdin, stdout
+# from sys import stdin, stdout
 
-input() # 첫 번째 입력 흘리기
-arr = sorted(map(int, stdin.read().split())) # 들어온 값들 바로 정렬
-stdout.write('\n'.join(map(str,arr))) # 숫자 하나당 개행 문자를 넣어 출력(시간 단축)
+# input() # 첫 번째 입력 흘리기
+# arr = sorted(map(int, stdin.read().split())) # 들어온 값들 바로 정렬
+# stdout.write('\n'.join(map(str,arr))) # 숫자 하나당 개행 문자를 넣어 출력(시간 단축)
 
 # # input
 # 5

@@ -12,6 +12,17 @@ for n in sorted(nums): # 입력받은 수를 정렬 한 배열을 하나씩 출�
 # for i in sorted(a[1:]):
 #     print(i)
 
-# input
+# # input
+# 5
+# 5
+# 4
+# 3
+# 2
+# 1
 
-# output
+# # output
+# 1
+# 2
+# 3
+# 4
+# 5

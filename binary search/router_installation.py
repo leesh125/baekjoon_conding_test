@@ -2,7 +2,7 @@ from sys import stdin
 
 N,C = map(int,stdin.readline().split())
 homes = [int(stdin.readline()) for _ in range(N)]
-homes.sort()
+homes.sort() # 이분 탐색을 위해 오름차순 정렬
 
 min_gap = 1 # 집 사이의 최소 거리 : 1
 max_gap = homes[-1]-homes[0] # 놓여진 집들 중 최대 거리 차이

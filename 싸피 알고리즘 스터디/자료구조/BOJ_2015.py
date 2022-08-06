@@ -1,22 +1,20 @@
 import sys
-sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
-
-def backTracking(start, total):
-    global ans
-    if total > K or start == N: return
-    if total == K:
-        ans += 1
-        return
-    for i in range(start,N):
-        total += nums[i]
-        backTracking(i+1, total)
 
 N, K = map(int, input().split())
 nums = list(map(int, input().split()))
+
+dp = [0] * (N+1)
+dp[0] = 0
 ans = 0
 
-for i in range(N):
-    backTracking(i, 0)
+for i in range(1,N+1):
+    dp[i] = nums[i-1] + dp[i-1]
 
+dict = {}
+for i in range(N,-1,-1):
+    ans += dict.get(dp[i] + K,0)
+    dict[dp[i]] = dict.get(dp[i],0) + 1
 print(ans)
+# B - A = K
+# B = A + K

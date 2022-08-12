@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 dx = [-1,1,0,0]
 dy = [0,0,-1,1]
-
+#
 def bfs():
     q = deque()
     q.append((virus1_x,virus1_y,1))

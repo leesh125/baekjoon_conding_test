@@ -9,9 +9,7 @@ def dfs(start):
             visited[g] = True
             ans[g] = order
             order += 1
-            dfs(g)
-
-        
+            dfs(g)      
 
 N, M, start = map(int, input().split())
 graph = [[] for _ in range(N+1)]

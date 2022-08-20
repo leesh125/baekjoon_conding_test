@@ -17,22 +17,12 @@ def dfs(x,y,cnt,arr):
         if arr[alpha] == 0:
             arr[alpha] += 1
             dfs(nx,ny,cnt+1,arr)
-            arr[alpha] = 0
+            arr[alpha] -= 1
 
 dir = [(-1,0),(1,0),(0,-1),(0,1)]
 N, M = map(int, input().split())
-graph = []
-ans = -1
-dic,count_dic = {}, {}
-visited = [[False] * M for _ in range(N)]
-
-for i in range(N):
-    temp = list(input().rstrip())
-    graph.append(temp)
-    for j in range(M):
-        if temp[j] not in dic:
-            dic[temp[j]] = 1
-            count_dic[temp[j]] = 0
+graph = [list(input().rstrip()) * M for _ in range(N)]
+ans = 0
 
 arr = [0] * (90-65+1)
 arr[ord(graph[0][0])-65] += 1

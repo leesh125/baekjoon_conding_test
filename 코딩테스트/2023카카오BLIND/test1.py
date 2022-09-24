@@ -1,24 +1,39 @@
-def solution(v):
+def solution(today, terms, privacies):
     answer = []
-    dicx = {}
-    dicy = {}
+    term_dic = {}
+    year,month,day = map(int,today.split('.'))
+    
+    for term in terms:
+        char, valid = term.split()
+        term_dic[char] = int(valid)
+    
+    for i in range(len(privacies)):
+        date, char = privacies[i].split()
+        
+        p_year,p_month,p_day = map(int,date.split('.'))
+        add_date = (term_dic[char]+p_month)
 
-    for e in v:
-        x,y = e
-        if x not in dicx:
-            dicx[x] = 1
-        else:
-            dicx[x] += 1
-        if y not in dicy:
-            dicy[y] = 1
-        else:
-            dicy[y] += 1
+        v_year = p_year + (add_date // 12) if add_date % 12 != 0 else p_year + (add_date // 13)
+        v_month = add_date%12 if add_date%12 != 0 else 12
+        v_day = p_day-1
 
-    for x in dicx:
-        if dicx[x] == 1:
-            answer.append(x)
-            break
-    for y in dicy:
-        if dicy[y] == 1:
-            answer.append(y)
+        if v_day == 0:
+            v_month -= 1
+            if v_month == 0:
+                v_year -= 1
+                v_month = 12
+            v_day = 28
+        
+        if v_year > year:
+            continue
+        elif v_year == year:
+            if v_month > month:
+                continue
+            elif v_month == month:
+                if v_day < day:
+                    answer.append(i+1)
+            else:    
+                answer.append(i+1)
+        else:
+            answer.append(i+1)
     return answer

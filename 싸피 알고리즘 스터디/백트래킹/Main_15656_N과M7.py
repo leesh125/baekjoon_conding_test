@@ -23,8 +23,9 @@ def dup_permutation2(arr, N):
 
 n,m = map(int, input().split())
 nums = sorted(list(map(int,input().split())))
+nums = sorted(map(int,input().split()))
 ans = [0] * m
-
+print('\n'.join(map(' '.join,product(map(str,nums),repeat=m))))
 # for pro in product(nums,repeat=m):
 #     print(*pro)
 

@@ -15,41 +15,36 @@ N,M = map(int,input().split())
 graph = [list(map(int, input().split())) for _ in range(N)]
 magics = [list(map(int,input().split())) for _ in range(M)]
 ans = 0
-cloud_visited = [[False] * N for _ in range(N)]
+
 clouds = [(N-1,0),(N-1,1),(N-2,0),(N-2,1)]
 q = deque(clouds)
 
 for magic in magics:
+    cloud_visited = [[False] * N for _ in range(N)]
     dir, moveCnt = magic
     dir -= 1
-    for g in graph:
-        print(g)    
-    print()
-    print(q)
+
     for i in range(len(q)):
         x,y = q.popleft()
         nx = (x + dx[dir] * moveCnt) % N
         ny = (y + dy[dir] * moveCnt) % N
         q.append((nx,ny))
-    print(q)
-    while q: # 4번 조건 까지 
-        cloudX,cloudY = q.popleft()
+
+    for i in range(len(q)): # 4번 조건 까지 
+        cloudX,cloudY = q[i]
         graph[cloudX][cloudY] += 1
         cloud_visited[cloudX][cloudY] = True
 
+    while q:
+        cloudX,cloudY = q.popleft()
         for i in [1,3,5,7]:
             dig_x = cloudX + dx[i]
             dig_y = cloudY + dy[i]
 
             if 0<=dig_x<N and 0<=dig_y<N and graph[dig_x][dig_y] > 0:
                 graph[cloudX][cloudY] += 1
-    for g in graph:
-        print(g)    
-    print()
+
     check_cloud()
-    for g in graph:
-        print(g)    
-    print()
 
 for g in graph:
     ans += sum(g)

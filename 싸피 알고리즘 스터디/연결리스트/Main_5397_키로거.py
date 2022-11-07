@@ -1,26 +1,24 @@
 import sys
+from collections import deque
 input = sys.stdin.readline
 
 for _ in range(int(input())):
     string = list(input().rstrip())
-    ans = []
-    idx = 0
+    lq, rq = deque(), deque()
+    
     for s in string:
         if s == '<':
-            if idx == 0:
-                continue
-            else:
-                idx -= 1
+            if lq:
+                rq.appendleft(lq.pop())
         elif s == '>':
-            if idx > len(ans):
-                continue
-            else:
-                idx += 1
+            if rq:
+                lq.append(rq.popleft())
         elif s == '-':
-            if idx == 0 or len(ans) == 0:
-                continue
-            else:
-                ans.pop(idx)
+            if lq:
+                lq.pop()
         else:
-            ans.append(s)
-    print(''.join(ans))
+            lq.append(s)
+    q = lq + rq
+    for n in q: print(n,end='')
+    print()
+    
